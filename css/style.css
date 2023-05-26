@@ -1,0 +1,119 @@
+/* normalize */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
+    font-family: 'Arvo', serif;   
+}
+/* Barra de navegacion */
+.dimens{
+    position: fixed;
+    top:0;
+    z-index: 5;
+    width: 100%;
+    padding: 20px 40px;
+    height: 80px;
+    background-color: #e43a18;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;   
+}
+.dimens a img{
+    height: 70px;
+    width: auto;
+}
+.dimens .lista_navegacion{   
+   display: flex;
+   gap: 50px;
+}    
+.dimens .lista_navegacion .item_navegacion{
+    
+    display: inline-block;
+    list-style: none;
+}
+.dimens .lista_navegacion .item_navegacion a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+}
+.dimens .lista_navegacion .item_navegacion a:hover{
+    color:darkolivegreen;
+}
+/* Para el carrusel */
+.cotainer_carousel{
+    margin-top: 80px;
+    position:sticky;
+    z-index: 1;
+    background-color: black;
+    padding: 30px;
+    width: 100%;  
+}
+.carousel{
+    display: flex;
+    margin: 0px auto;
+    width: 80%;   
+}
+#carouselExampleSlidesOnly img {
+    position: relative;
+    height: 60vh;
+    z-index: -2;
+}
+/* Frase principal */
+.mensaje{ 
+    margin: 20px auto;
+    text-align: center;
+}
+.mensaje p.parrafo{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-style: italic;
+    font-size: 27px;
+}
+/* Footer main page */
+footer{
+    margin-top: 50px;
+    width: 100%;
+    background-image: url(../images/footer.svg);
+    height: 200px;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+footer.footer_main .contenedor{
+    padding:10px 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;    
+}
+.footer_main .contenedor .contenido{
+    padding: 10px;
+    border-right: 7px solid black;
+    display: block;
+   
+}
+.footer_main .contenedor #ultima_caja{
+    border-right: transparent;
+}
+.footer_main .contenedor .contenido .nombre_columna{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+}
+.footer_main .contenedor .contenido div.texto div.redes{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    padding-left: 40px;
+    font-size: 35px; 
+}
+.footer_main .contenedor .contenido div.texto div.redes a{
+    color: black;
+}
+.footer_main .contenedor .contenido div.texto div.redes a:hover{
+    color: white;
+}
