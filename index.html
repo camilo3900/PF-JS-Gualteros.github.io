@@ -4,13 +4,330 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine-Kingdom</title>
+    <title>Movie-Kingdom</title>
 </head>
 <body>
     <!-- Programa interactivo de un Cine donde el usuario debe escribir nombre y edad para acceder -->
+<!-- Barra navegacion -->
+<nav class="dimens">
+    <a href="#"><img src="./images/logo.png" alt="logo_cine"></a>
+    <ul class="lista_navegacion">
+        <li class="item_navegacion"><a href="#">HOME</a></li>
+        <li class="item_navegacion"><a href="#">ANUNCIOS</a></li>
+        <li class="item_navegacion"><a href="#">ENCUENTRANOS</a></li>
+        <li class="item_navegacion"><a href="#">HISTORIA</a></li>
+      </ul>
+</nav>
+    <!-- CARRUSEL HOMEPAGE -->
+    <div class="cotainer_carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="false" data-bs-interval="10" data-bs-pause="hover">
+            <div class="carousel-inner">
+              <div class="carousel-item active h-100">
+                <img src="./images/carrusel1.jpg" class="d-block w-100 opacity-75" alt="caarrusel-1">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="./images/carrusel2.jpg" class="d-block w-100 opacity-75" alt="carrusel-2">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="./images/carrusel3.jpg" class="d-block w-100 opacity-75" alt="carrusel-3">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="./images/carrusel4.jpg" class="d-block w-100 opacity-75" alt="carrusel-3">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="./images/carrusel5.jpg" class="d-block w-100 opacity-75" alt="carrusel-3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+    </div>
+    <div id="titulos">
+        <h1 class="titulo_productos">MOVIE KINGDOM</h1>
+    </div>
+    <div class="mensaje">
+        <p class="parrafo parrafo_frase">La aventura comienza cuando las luces se apagan: ¡Bienvenido a nuestro cine!</p>
+    </div>
+    <!-- Opciones busqueda por categoría -->
+    <div class="opciones">
+    </div>
+    <section id="categorias">
+        <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+
+                <hr class="linea">
+            <div class="sub">
+                <h2 class="categoria_titulo">Categorias</h2>  
+                <div id="filtro_busqueda">
+                    <button>Buscar</button>
+                    <input type="text" placeholder="Busqueda Avanzada...">
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle bg-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Seleccionar Categoría
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Peliculas</a></li>
+                        <li><a class="dropdown-item" href="#">Comidas</a></li>
+                        <li><a class="dropdown-item" href="#">Salas</a></li>
+                    </ul>
+                </div>  
+            </div>
+
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100" , data-aos-duration="2000">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 1">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 1</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 2">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 2</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 3">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 3</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100" , data-aos-duration="2000">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 4">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 4</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 5">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 5</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 6">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 6</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100" , data-aos-duration="2000">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 7">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 7</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 8">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 8</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 9">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 9</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" data-aos="fade-up" data-aos-delay="100" , data-aos-duration="2000">
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 10">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 10</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 11">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 11</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card">
+                        <img class="card-img-top" src="" alt="combo 12">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">combo 12</h3>
+                            <ul class="card-text">
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Porro, illo repellendus.</li>
+                                <li>Obcaecati, voluptate in.</li>
+                                <li>Debitis, sint perferendis?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </section>
+    <hr>
+        <footer class="footer_main">
+            <div class="contenedor">
+                <div class="contenido">
+                    <p class="nombre_columna">INFO</p>
+                    <div class="texto">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem itaque unde laudantium mollitia,
+                            accusantium omnis earum!</p>
+                    </div>
+                    
+                </div>
+                <div class="contenido">
+                    <p class="nombre_columna">SUCURSALES</p>
+                    <div class="texto">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem itaque unde laudantium mollitia,
+                            accusantium omnis earum!</p>
+                    </div>
+                    
+                </div>
+                <div class="contenido">
+                    <p class="nombre_columna">REDES SOCIALES</p>
+                    <div class="texto">
+                        <div class="redes">
+                            <a class="icon-config text-decoration-none me-5" href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                            <a class="icon-config text-decoration-none me-5" href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a class="icon-config text-decoration-none me-5" href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                            <a class="icon-config text-decoration-none me-5" href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                            <a class="icon-config text-decoration-none me-5" id="tiktok" href="https://www.tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                          
+                    </div>
+                    
+                </div>
+                <div class="contenido" id="ultima_caja">
+                    <p class="nombre_columna">INQUIETUDES</p>
+                    <div class="texto">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem itaque unde laudantium mollitia,
+                            accusantium omnis earum!</p>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+            
+            </footer>
+        </footer>
 
  
-    
+
     <script src="./js/funciones.js"></script>
     <script src="./js/main.js"></script>
 </body>

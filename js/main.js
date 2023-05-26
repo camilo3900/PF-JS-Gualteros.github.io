@@ -35,6 +35,7 @@ dulceria5.descripcion(
   "2 Gaseosas Medianas Vaso 22 Oz",
   "1 Perro Caliente"
 );
+
 /*lista contenedora de objetos tipo pelicula */
 let listaPeliculas= [pelicula1, pelicula2, pelicula3, pelicula4, pelicula5];
 /* lista contenedora de objetos tipo dulceria */
