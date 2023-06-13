@@ -58,7 +58,7 @@
           </div>
     </div>
     <div id="titulos">
-        <h1 class="titulo_productos">MOVIE KINGDOM</h1>
+        <h1 class="titulo_productos" id="titulo_centrar">MOVIE KINGDOM</h1>
     </div>
     <div class="mensaje">
         <p class="parrafo parrafo_frase">La aventura comienza cuando las luces se apagan: ¡Bienvenido a nuestro cine!</p>
@@ -90,55 +90,19 @@
             </div>
 
         </div>
-        <div class="container" data-aos="fade-up" data-aos-delay="100" , data-aos-duration="2000">
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="card">
-                        <img class="card-img-top" src="./images/combo1.jpg" alt="combo 1">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">combo 1</h3>
-                            <ul class="card-text">
-                                <li>Lorem, ipsum dolor.</li>
-                                <li>Porro, illo repellendus.</li>
-                                <li>Obcaecati, voluptate in.</li>
-                                <li>Debitis, sint perferendis?</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="card">
-                        <img class="card-img-top" src="./images/combo1.jpg" alt="combo 2">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">combo 2</h3>
-                            <ul class="card-text">
-                                <li>Lorem, ipsum dolor.</li>
-                                <li>Porro, illo repellendus.</li>
-                                <li>Obcaecati, voluptate in.</li>
-                                <li>Debitis, sint perferendis?</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-
-                    <div class="card">
-                        <img class="card-img-top" src="./images/combo2.jpg" alt="combo 3">
-                        <div class="card-body">
-                            <h3 class="card-title text-center">combo 3</h3>
-                            <ul class="card-text">
-                                <li>Lorem, ipsum dolor.</li>
-                                <li>Porro, illo repellendus.</li>
-                                <li>Obcaecati, voluptate in.</li>
-                                <li>Debitis, sint perferendis?</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <div id="filtro_busqueda">
+            <button id="boton_buscar">Buscar</button>
+            <input id="campo", name="campo", type="text" placeholder="Busqueda Avanzada...">
+        </div>
+    
+        <section class="main__products container-fluid">
+            <div class="row p-0">
+                <h2 data-aos="fade-up" class="col-12">Nuevas Peliculas</h2>
             </div>
-        </div>   
+            <div class="main__products-container main__new-products-container container-fluid">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 justify-content-center " id="principal">
+                </div>
+            </div>  
     </section>
     <hr>
         <footer class="footer_main">
@@ -190,6 +154,7 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
         <script src="./js/funciones.js"></script>
-        <script src="./js/main.js"></script>
+        <script src="./js/filtro.js"></script>
+<!--         <script src="./js/main.js"></script> -->
 </body>
 </html>
