@@ -1,165 +1,106 @@
-/* Instancias de Objetos tipo pelicula */
-const pelicula1 = new Pelicula("Los Pitufos", 15000);
-const pelicula2 = new Pelicula("Los Simpson", 10000);
-const pelicula3 = new Pelicula("Ecanto", 12000);
-const pelicula4 = new Pelicula("El Lightyear", 14000);
-const pelicula5 = new Pelicula("La Balada del Pistolero", 12000);
-/* Instancias de Objetos tipo Dulcería */
-const dulceria1 = new Dulceria("Combo 1", 37000);
-dulceria1.descripcion(
-  "1 Crispeta Grande",
-  "2 Gaseosas Grandes 32 Oz",
-  "2 Chocolatinas 12 gr"
-);
-const dulceria2 = new Dulceria("Combo 2", 54000);
-dulceria2.descripcion(
-  "1 Crispeta Mediana",
-  "2 Perros Calientes",
-  "2 Gaseosas Medianas Vaso 22 Oz"
-);
-const dulceria3 = new Dulceria("Combo 3", 25000);
-dulceria3.descripcion(
-  "1 Crispeta Mediana",
-  "1 Gaseosa Mediana Vaso 22 Oz",
-  "1 Chocolatina 12 gr"
-);
-const dulceria4 = new Dulceria("Combo 4", 22000);
-dulceria4.descripcion(
-  "1 Perro Caliente",
-  "1 Gaseosa Mediana Vaso 22 Oz",
-  "1 Chocolatina 12 gr"
-);
-const dulceria5 = new Dulceria("Combo 5", 45000);
-dulceria5.descripcion(
-  "1 Crispeta Mediana",
-  "2 Gaseosas Medianas Vaso 22 Oz",
-  "1 Perro Caliente"
-);
+/* const contenedor= document.querySelector('#principal'); */
+const buttonCategorias = document.querySelector(".dropdown-menu");
+const boton=document.querySelector(".btn");
+const contenedor= document.querySelector('#principal');
+const buscar= document.querySelector('#boton_buscar')
+const inputBusqueda= document.querySelector('#campo')
+/* const informacion= document.querySelector('.Info'); */
+/* Se organizan los objetos tipo  */
+const comidas=[comida1, comida2, comida3, comida4, comida5];
+const peliculas = [pel1, pel2, pel3, pel4, pel5, pel6, pel7, pel8, pel9, pel10, pel11, pel12, pel13, pel14, pel15, pel16, pel17, pel18, pel19, pel20, pel21, pel22, pel23, pel24, pel25, pel26, pel27, pel28, pel29, pel30, pel31, pel32, pel33, pel34, pel35, pel36];
+/* Se llama la funcion para guardar variables en el storage */
+llenarLocalStorage();
+/* localStorage.clear(); */
+/* Se crea un listado de categorias */
+let listaCategorias = [
+  "Todas las Categorias",
+  "Accion",
+  "Aventura",
+  "Comedia",
+  "Guerra",
+  "Infantil",
+  "Terror",
+];
+/* Mediante la funcion filtrarCategoria se filtran las peliculas del storage que coincidan con atributo genero escogido */
+let buscaCategoria=function filtrarCategoria(arr, filtro) {
+  const filtrado = arr.filter((el) => {
+    return el.genero==filtro;
+  });
+  return filtrado;
+}
+/*Se recorre la lista para generar los li de categorias */
+for (const cate of listaCategorias) {
+  const item = document.createElement("li");
+  const categoria = document.createElement('a');
+  categoria.textContent=cate;
+  categoria.classList.add('dropdown-item');
+  item.appendChild(categoria);
+ buttonCategorias.appendChild(item);
 
-/*lista contenedora de objetos tipo pelicula */
-let listaPeliculas= [pelicula1, pelicula2, pelicula3, pelicula4, pelicula5];
-/* lista contenedora de objetos tipo dulceria */
-let listaDulceria=[dulceria1, dulceria2, dulceria3, dulceria4, dulceria5];
-/* lista de salas de cine */
-let listaSalas=["Sala 2D", "Sala 3D", "Sala Ultra 3D", "Sala VIP"];
-/* Se inicializan las variables que se van a tener en cuenta en el transcurso del programa */
-let siga=true;
-let opcionPelicula="";
-let cantidadPeli="";
-let cantidadComi="";
-let opcionDulceria="";
-let opcionMenu="";
-let sala="";
-/* Se pide el nombre y edad del usuario separados por un espacio */
-datosCliente=prompt("Bienvenido a CINE-KINGDOM\nAntes de iniciar escribe tu nombre y apellido separados por un espacio: ");
-/* Se utiliza el metodo split para separar el array datosCliente y asignarlos a variables por separado */
-let datosClientesLista = datosCliente.split(" ");
-// Obtener los datos individuales
-const nombreCliente = datosClientesLista[0];
-const edadCliente= datosClientesLista[1];
-console.log("name: "+nombreCliente);
-console.log("age: "+parseInt(edadCliente));
-/* Se utiliza un do-while para garantizar que el menu principal se visualice al menos una vez  */
-do { 
-   opcionMenu=parseInt(solicitudes("MENU PRINCIPAL PELICULA-KINGDOM\n1.Peliculas\n2.Dulcería\n3.Salas\n4.Factura\n5.Salir\nEscoge una opción: "));
-  switch (opcionMenu) {
-    case 1:
-      console.log("elegiste pelicula");
-      siga=false;
-      opcionPelicula= parseInt(solicitudes("Escoge la pelicula que quieres ver:\n1."+listaPeliculas[0].nombre+"\n2."+listaPeliculas[1].nombre+"\n3."+listaPeliculas[2].nombre+"\n4."+listaPeliculas[3].nombre+"\n5."+listaPeliculas[4].nombre));
-            menuPeliculas(opcionPelicula);
-      siga=true;
-      break;
-      case 2:
-        opcionDulceria=parseInt(solicitudes("Escoge un Combo para ver detalles:\n1."+ listaDulceria[0].nombre+ "\n2."+ listaDulceria[1].nombre+ "\n3."+listaDulceria[2].nombre+"\n4."+listaDulceria[3].nombre+"\n5."+listaDulceria[4].nombre));
-              menuDulceria(opcionDulceria);
-        siga=true;
-        break;
-        case 3:
-        sala=solicitudes("SALAS DISPONIBLES \n1."+listaSalas[0]+"\n2."+listaSalas[1]+"\n3."+listaSalas[2]+"\n4."+listaSalas[3]+"\nEscoge una sala: ");
-        siga=true;
-      break;
-      case 4:
-        let pelicula = listaPeliculas[opcionPelicula - 1].nombre;
-        let precioPelicula = listaPeliculas[opcionPelicula - 1].precio;
-        let cantidadPeliculas = cantidadPeli;
-        let cantidadComida = cantidadComi;
-        let comida = listaDulceria[opcionDulceria - 1].nombre;
-        let precioComida = listaDulceria[opcionDulceria - 1].precio;
-        let totalEntradas = precioPelicula * cantidadPeliculas;
-        let totalComida = precioComida * cantidadComida;
-        let salaEscogida = listaSalas[sala - 1];
-        let totalTotal = "";
+     categoria.onclick=()=>
+     {
+      contenedor.innerHTML="";
+       boton.innerText=cate;
+       for (const peli of buscaCategoria(peliculaDesdeLS('pelis'), cate)) {
+                   /* Aqui va el friltrado por genero */
+       contenedor.appendChild(crearContenedor(peli));
+       }
+      boton.innerText=="Todas las Categorias"? peliculaDesdeLS('pelis').forEach(peli => { 
+          contenedor.appendChild(crearContenedor(peli))}):"";
+          contenedor.innerHTML==""?contenedor.innerHTML=`<h3>lo sentimos, no hay peliculas de esta Categoria</h3>`: console.log("con peliculas"); 
+     }  
+}
 
-        if (parseInt(edadCliente) < 18 || parseInt(edadCliente) > 60) {
-          totalTotal =
-            totalEntradas + totalComida - (totalEntradas + totalComida) * 0.2;
-          alert(
-            "FACTURA: CINE-KINGDOM\nCliente: " +
-              nombreCliente +
-              "\n-----------------------------------------\n++CARTELERA++\npelicula: " +
-              pelicula +
-              "\n" +
-              "Sala: " +
-              salaEscogida +
-              "\n" +
-              "Precio Entrada: $" +
-              precioPelicula +
-              "\n" +
-              "Numero de Entradas: " +
-              cantidadPeliculas +
-              "\n" +
-              "Valor total Entradas: $" +
-              totalEntradas +
-              "\n\n-----------------------------------------\n++DULCERIA++\nTipo: " +
-              comida +
-              "\nPrecio Comida: $" +
-              precioComida +
-              "\nCantidad: " +
-              cantidadComida +
-              "\nValor total Comida: $" +
-              totalComida +
-              "\n-----------------------------------------\nTOTAL PAGAR: $" +
-              totalTotal +
-              '\n"NOTA: LOS MENORES DE EDAD Y MAYORES DE 60 AÑOS RECIBEN UN 20% DE DESCUENTO SOBRE EL VALOR TOTAL"'
-          );
-        } else {
-          totalTotal = totalEntradas + totalComida;
-          alert(
-            "FACTURA: CINE-KINGDOM\nCliente:\n-----------------------------------------\n++CARTELERA++\npelicula: " +
-              pelicula +
-              "\n" +
-              "Sala: " +
-              salaEscogida +
-              "\n" +
-              "Precio Entrada: $" +
-              precioPelicula +
-              "\n" +
-              "Numero de Entradas: " +
-              cantidadPeliculas +
-              "\n" +
-              "Valor total Entradas: $" +
-              totalEntradas +
-              "\n\n-----------------------------------------\n++DULCERIA++\nTipo: " +
-              comida +
-              "\nPrecio Comida: $" +
-              precioComida +
-              "\nCantidad: " +
-              cantidadComida +
-              "\nValor total Comida: $" +
-              totalComida +
-              "\n-----------------------------------------\nTOTAL PAGAR: $" +
-              totalTotal
-          );
-        }
-        siga=false;
-      break;
-      case 5:
-        siga=false;
-        break;
-    default:
-      alert("Selección erronea.  Intenta de nuevo!!");
-      siga=true;
-      break;
-  } 
-} while (siga);
+
+
+/* funcion para llenar el storage */
+function llenarLocalStorage(){
+ localStorage.setItem('pelis', JSON.stringify(peliculas));/* Se convierte el listado de objetos a String */
+ localStorage.setItem('food', JSON.stringify(comidas));
+} 
+/* Funcion para crear card de peliculas */
+function crearContenedor(dato){
+  const productArticle = document.createElement('article');
+  productArticle.innerHTML=
+  `<div class="card d-flex flex-fill" >
+  <img src=" ${dato.img}" alt="${dato.nombre}">
+  <h3>${dato.nombre}</h3>
+  <p>Precio: $${dato.precio} </p>
+  <p>Categoria: ${dato.genero} </p>
+    <div class="card-action">
+      <button>Comprar</button>
+    </div>
+</div>`;
+return productArticle;
+}
+  /* Funcion que retorna objetos que coinciden con la busqueda */
+  let busca=function filtrarPorCampo(arr, filtro) {
+    const filtrado = arr.filter((el) => {
+      return el.nombre.includes(filtro);
+    });
+    return filtrado;
+  }
+/* Para mostrar todas las peliculas */
+const peliculaDesdeLS=(llave)=>JSON.parse(localStorage.getItem(llave));/* Se llama cada lista */
+console.log(peliculaDesdeLS('pelis'));
+peliculaDesdeLS('pelis').forEach(peli => { 
+  contenedor.appendChild(crearContenedor(peli));
+})
+
+/* Evento click para busqueda de pelicula */
+buscar.onclick= (e)=>{
+
+  e.preventDefault();
+  contenedor.innerHTML="";/* Se eliminan los cards del contenedor para emular la recarga de la pagina por busqueda */
+
+  console.log(busca(peliculaDesdeLS('pelis'), inputBusqueda.value).length);
+  for(peli of busca(peliculaDesdeLS('pelis'), inputBusqueda.value)){/* Se los objetos filtrados para agregarlos como hijos del div principal */
+    contenedor.appendChild(crearContenedor(peli));
+
+  }
+  /* Condición para determinar si hay películas como resultado de la búsqueda */
+  contenedor.innerHTML==""?contenedor.innerHTML=`<h3>lo sentimos, no hay peliculas</h3>`: console.log("con peliculas");   
+  console.log(f(peliculaDesdeLS('pelis'), inputBusqueda.value));
+
+
+}

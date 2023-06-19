@@ -7,9 +7,15 @@
     font-family: 'Arvo', serif;   
 }
 body{
-    background-color: #403737;
+    /* background-color: #403737; */
+   /*  background-color: #191515; */
+   background-color: black;
 }
 /* Barra de navegacion */
+#logo{
+    font-size: 40px;
+    font-weight: bold;
+}
 .dimens{
     position: fixed;
     top:0;
@@ -58,11 +64,11 @@ body{
 .carousel{
     display: flex;
     margin: 0px auto;
-    width: 80%;   
+    width: 100%;   
 }
 #carouselExampleSlidesOnly img {
     position: relative;
-    height: 60vh;
+    height: 70vh;
     z-index: -2;
 }
 /* Frase principal */
@@ -75,6 +81,38 @@ body{
     text-transform: capitalize;
     font-style: italic;
     font-size: 27px;
+}
+.sub{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+/* Seccion de busqueda */
+
+.contenedor_busqueda{
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    position: relative;
+    z-index: 5;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+div.dropdown .dropdown-menu{
+    position:absolute;
+    z-index: 500;
+}
+
+div.dropdown .dropdown-menu li a{
+    
+    font-size: 30px;
+}
+div.dropdown .dropdown-menu li a{
+    color: #e43a18;
+}
+div.dropdown .dropdown-menu li a:hover{
+    background-color: chartreuse;
 }
 
 h3, h2, h1{
@@ -92,10 +130,48 @@ img{
     /* border-radius: 20px; */
 }
 .card{
-    background-color: #4d4d4d;
+    background-color: #191515;
     padding: 10px;
     border: 5px solid black;
+    margin-bottom: 30px;
 }
+.card p{
+    font-size: 22px;
+}
+.card h3{
+    margin-top: 20px;
+   margin-bottom: 20px;
+}
+#principal{
+    padding: 100px;
+    position: relative;
+    z-index: -1;
+}
+
+ input#campo{
+    padding: 10px;
+    width: 800px;
+}
+button#boton_buscar{
+    padding:10px;
+}
+div.card-action{
+
+ text-align: center;
+}
+div.card-action button{
+    padding: 3px;
+    font-size: 24px;
+    background-color: red;
+    color: white;
+    border: 5px solid black;
+    border-radius: 20px;
+    
+}
+div.card-action button:hover {
+    color: aqua!important;
+}
+
 /* Footer main page */
 footer{
     margin-top: 50px;
@@ -139,4 +215,20 @@ footer.footer_main .contenedor{
 }
 .footer_main .contenedor .contenido div.texto div.redes a:hover{
     color: white;
+}
+
+@media screen and (max-width: 550px){
+    .header{
+        width: 100vw;
+    }
+    .card{
+        width: 100vw;
+        background-color: #e43a18;
+    }
+    nav{
+        visibility: hidden;
+    }
+    footer{
+        visibility: hidden;
+    }
 }

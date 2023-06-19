@@ -22,7 +22,10 @@
     <!-- Programa interactivo de un Cine donde el usuario debe escribir nombre y edad para acceder -->
 <!-- Barra navegacion -->
 <nav class="dimens">
+
+<!--     <p id="logo">MOVIE-KINGDOM</p> -->
     <a href="#"><img src="./images/logo.png" alt="logo_cine"></a>
+    
     <ul class="lista_navegacion">
         <li class="item_navegacion"><a href="#">HOME</a></li>
         <li class="item_navegacion"><a href="#">ANUNCIOS</a></li>
@@ -44,7 +47,10 @@
                 <img src="./images/carrusel3.jpg" class="d-block w-100 opacity-75" alt="carrusel-3">
               </div>
               <div class="carousel-item h-100">
-                <img src="./images/carrusel4.jpg" class="d-block w-100 opacity-75" alt="carrusel-3">
+                <img src="./images/carrusel4.jpg" class="d-block w-100 opacity-75" alt="carrusel-4">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="./images/carrusel7.jpg" class="d-block w-100 opacity-75" alt="carrusel-5">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
@@ -58,49 +64,44 @@
           </div>
     </div>
     <div id="titulos">
-        <h1 class="titulo_productos" id="titulo_centrar">MOVIE KINGDOM</h1>
+        <h1 class="titulo_productos" id="titulo_centrar">Movie-Kingdom</h1>
     </div>
     <div class="mensaje">
         <p class="parrafo parrafo_frase">La aventura comienza cuando las luces se apagan: ¡Bienvenido a nuestro cine!</p>
     </div>
-    <!-- Opciones busqueda por categoría -->
-    <div class="opciones">
-    </div>
+
     <section id="categorias">
         <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
 
                 <hr class="linea">
             <div class="sub">
-                <h2 class="categoria_titulo">Categorias</h2>  
-                <div id="filtro_busqueda">
-                    <button>Buscar</button>
-                    <input type="text" placeholder="Busqueda Avanzada...">
-                </div>
+                <h2 class="categoria_titulo">Categorias</h2> 
+            </div> 
+           
+            <div class="contenedor_busqueda">
+
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle bg-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Seleccionar Categoría
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Peliculas</a></li>
-                        <li><a class="dropdown-item" href="#">Comidas</a></li>
-                        <li><a class="dropdown-item" href="#">Salas</a></li>
+                        <!-- Espacio para crear listado categorias en js -->
                     </ul>
-                </div>  
-            </div>
+                </div> 
+                <div id="filtro_busqueda">
+                    <button id="boton_buscar">Buscar</button>
+                    <input id="campo", name="campo", type="text", placeholder="Busqueda Avanzada...", value="">
+                </div>
 
-        </div>
-        <div id="filtro_busqueda">
-            <button id="boton_buscar">Buscar</button>
-            <input id="campo", name="campo", type="text" placeholder="Busqueda Avanzada...">
-        </div>
-    
-        <section class="main__products container-fluid">
-            <div class="row p-0">
-                <h2 data-aos="fade-up" class="col-12">Nuevas Peliculas</h2>
             </div>
-            <div class="main__products-container main__new-products-container container-fluid">
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 justify-content-center " id="principal">
+        </div>
+        <section class="main__products container-fluid">
+
+            <div class="main__products-container main__new-products-container container-fluid"  >
+                <!-- Contenedor div para las peliculas -->
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 justify-content-center " id="principal" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+
                 </div>
             </div>  
     </section>
@@ -153,8 +154,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
-        <script src="./js/funciones.js"></script>
-        <script src="./js/filtro.js"></script>
-<!--         <script src="./js/main.js"></script> -->
+            <script src="./js/funciones.js"></script>
+        <script src="./js/main.js"></script>
 </body>
 </html>
