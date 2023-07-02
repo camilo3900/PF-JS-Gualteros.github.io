@@ -1,0 +1,254 @@
+[
+    {
+      "id": 1,
+      "nombre": "rapido y furioso 10",
+      "precio": 9000,
+      "img": "../images/pelis/rapidos-&-furiosos.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 2,
+      "nombre": "star wars",
+      "precio": 7600,
+      "img": "../images/pelis/star-wars.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 3,
+      "nombre": "creed III",
+      "precio": 2800,
+      "img": "../images/pelis/creed-iii.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 4,
+      "nombre": "navalny",
+      "precio": 1500,
+      "img": "../images/pelis/navalny.jpg",
+      "genero": "Guerra"
+    },
+    {
+      "id": 5,
+      "nombre": "nine bullets",
+      "precio": 5800,
+      "img": "../images/pelis/nine_bullets.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 6,
+      "nombre": "trasformers: el origen de las bestias",
+      "precio": 1200,
+      "img": "../images/pelis/transformers-rise-of-the-beast.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 7,
+      "nombre": "la  bestia",
+      "precio": 1800,
+      "img": "../images/pelis/beast.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 8,
+      "nombre": "La Maldición",
+      "precio": 2800,
+      "img": "../images/pelis/the-accursed.jpg",
+      "genero": "Terror"
+    },
+    {
+      "id": 9,
+      "nombre": "avatar bajo el agua",
+      "precio": 57000,
+      "img": "../images/pelis/avatar-the-way-of-water.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 10,
+      "nombre": "bestia",
+      "precio": 3000,
+      "img": "../images/pelis/beast.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 11,
+      "nombre": "briuser",
+      "precio": 5800,
+      "img": "../images/pelis/bruiser.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 12,
+      "nombre": "emancipation",
+      "precio": 7000,
+      "img": "../images/pelis/emancipation.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 13,
+      "nombre": "guardianes de la glaxia V.03",
+      "precio": 9000,
+      "img": "../images/pelis/guardians-of-the-galaxy.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 14,
+      "nombre": "sonic: the hedgegod",
+      "precio": 8000,
+      "img": "../images/pelis/sonic-the-hedgehog.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 15,
+      "nombre": "flash",
+      "precio": 6700,
+      "img": "../images/pelis/flash.jpg",
+      "genero": "Accion"
+    },
+    {
+      "id": 16,
+      "nombre": "mario bros: la pelicula",
+      "precio": 11000,
+      "img": "../images/pelis/super-mario-bros-the-movie.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 17,
+      "nombre": "elemental",
+      "precio": 5500,
+      "img": "../images/pelis/elemental.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 18,
+      "nombre": "end of loyalty",
+      "precio": 6000,
+      "img": "../images/pelis/end-of-loyalty.jpg",
+      "genero": "Guerra"
+    },
+    {
+      "id": 19,
+      "nombre": "mansion encantada",
+      "precio": 9000,
+      "img": "../images/pelis/haunted-mansion.jpg",
+      "genero": "Terror"
+    },
+    {
+      "id": 20,
+      "nombre": "peter pan y wendy",
+      "precio": 7500,
+      "img": "../images/pelis/peter-pan-y-wendy.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 21,
+      "nombre": "spiderman: across the spiderverse",
+      "precio": 8000,
+      "img": "../images/pelis/spiderman_across_the_spiderverse.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 22,
+      "nombre": "paw patrol: the migthy movie",
+      "precio": 10000,
+      "img": "../images/pelis/paw-patrol-the-mighty-movie.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 23,
+      "nombre": "indiana jones: el dia del destino",
+      "precio": 10000,
+      "img": "../images/pelis/indiana-jones-and-the-dial-of-destiny.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 24,
+      "nombre": "extraction 2",
+      "precio": 8000,
+      "img": "../images/pelis/extraction-two.jpg",
+      "genero": "Guerra"
+    },
+    {
+      "id": 25,
+      "nombre": "chicken run",
+      "precio": 8000,
+      "img": "../images/pelis/chicken-run.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 26,
+      "nombre": "bad guys",
+      "precio": 8000,
+      "img": "../images/pelis/bad-guys.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 27,
+      "nombre": "la elefanta del mago",
+      "precio": 7500,
+      "img": "../images/pelis/magicians-elephant.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 28,
+      "nombre": "scream six",
+      "precio": 8000,
+      "img": "../images/pelis/scream-six.jpg",
+      "genero": "Terror"
+    },
+    {
+      "id": 29,
+      "nombre": "evil dead rise",
+      "precio": 9000,
+      "img": "../images/pelis/evil-dead-rise.jpg",
+      "genero": "Terror"
+    },
+    {
+      "id": 30,
+      "nombre": "contractor",
+      "precio": 8000,
+      "img": "../images/pelis/contractor.jpg",
+      "genero": "Guerra"
+    },
+    {
+      "id": 31,
+      "nombre": "adam project",
+      "precio": 8000,
+      "img": "../images/pelis/adam-project.jpg",
+      "genero": "Guerra"
+    },
+    {
+      "id": 32,
+      "nombre": "amazing maurice",
+      "precio": 8000,
+      "img": "../images/pelis/amazing-maurice.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 33,
+      "nombre": "the boogeyman",
+      "precio": 8000,
+      "img": "../images/pelis/boogeyman.jpg",
+      "genero": "Terror"
+    },
+    {
+      "id": 34,
+      "nombre": "Living with Chucky",
+      "precio": 8000,
+      "img": "../images/pelis/living-with-chucky.jpg",
+      "genero": "Infantil"
+    },
+    {
+      "id": 35,
+      "nombre": "dungeons and dragons",
+      "precio": 8000,
+      "img": "../images/pelis/dungeons-and-dragons-honor-among-thieves.jpg",
+      "genero": "Aventura"
+    },
+    {
+      "id": 36,
+      "nombre": "antman: quantumania",
+      "precio": 12000,
+      "img": "../images/pelis/antman-and-the-wasp-quantumania.jpg",
+      "genero": "Accion"
+    }
+  ]
