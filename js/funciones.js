@@ -11,9 +11,10 @@ class Pelicula {
     return total= this.precio*cantidad;
   }
 }
+
 /* Funcion para consumir archivo json de peliculas */
 function consumirPeliculas(){
-  fetch('../peliculas.json')
+  fetch('../datos/peliculas.json')
   .then(function(response) {
     return response.json();
   })

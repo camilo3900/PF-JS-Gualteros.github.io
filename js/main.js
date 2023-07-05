@@ -7,7 +7,7 @@ const inputBusqueda= document.querySelector('#campo');
 const boton=document.querySelector(".btn");
 let pelis=[];/* Array que se llena con peliculas del ls */
 /* Se crea un array de categorias */
-
+localStorage.clear();
 let listaCarrito=[];
 const listaCategorias = [
   "Todas las Categorias",
@@ -22,39 +22,7 @@ const listaCategorias = [
 /* Llamamos a la funcion consumir json y guardar en el localStorage */
 consumirPeliculas();
 
-/* Evento para los botones */
-/* function botonesComprar(){
-  const arrayBotones = document.querySelectorAll(".btn_comprar");
-  console.log(arrayBotones);
-  console.log(arrayBotones.length);
-  arrayBotones.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      pelis.push(peliculaDesdeLS("peliculasLS"));
-      let pel = pelis.filter((el) => el.id== btn.id);
-      console.log("Añadiste al carrito la pelicula: "+ pel[0].nombre);
-      Toastify({
-  
-        text: `Añadiste la pelicula: ${pel[0].nombre}`,
-        position: "bottom-left",
-        className: "mi-toastify",
-        offset: {
-          x: -30, // Ajusta el desplazamiento horizontal
-          y: 20, // Ajusta el desplazamiento vertical
-        },
-        duration: 3000,   
-        }).showToast();
-        contenedorCarrito.appendChild(crearItemCompra(pel[0]));
-        listaCarrito.push(pel[0]);
-        console.log("Lista carrito total:");
-        console.log(listaCarrito);
-        botonesComprar();
-        console.log(listaCarrito.length);
 
-       
-    });
-  });
-  
-} */
 function botonesComprar(){
   const arrayBotones = document.querySelectorAll(".btn_comprar");
   console.log("botones categoria escogida:");
