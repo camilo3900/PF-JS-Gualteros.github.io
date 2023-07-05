@@ -19,6 +19,7 @@ function consumirPeliculas(){
   })
   .then(function(data) {
     pelis=data;
+    console.log("Peliculas consumidas");
     console.log(pelis);
     llenarLocalStorage('peliculasLS', pelis ); 
   })
@@ -26,22 +27,23 @@ function consumirPeliculas(){
     console.log('Ocurrió un error:'+error);
   });
 }
+
  /* funcion para llenar el storage */
  function llenarLocalStorage(clave, dato){
   localStorage.setItem(clave, JSON.stringify(dato));/* Se convierte el listado de objetos a String */
  } 
+
 /* Funcion para traer las peliculas del localStorage*/
 const peliculaDesdeLS=(llave)=>JSON.parse(localStorage.getItem(llave));/* Se llama cada lista */
 
-
-
-/* Mediante la funcion filtrarCategoria se filtran las peliculas del storage que coincidan con atributo genero escogido */
+/*  se filtran las peliculas del storage que coincidan con la categoria seleccionada */
 let buscaCategoria=function filtrarCategoria(arr, filtro) {
   const filtrado = arr.filter((el) => {
     return el.genero==filtro;
   });
   return filtrado;
 }
+
 /* Funcion para crear el contenedor donde se mostrará cada película */
 function crearContenedor(dato){
   const productArticle = document.createElement('article');
@@ -57,6 +59,8 @@ function crearContenedor(dato){
 </div>`;
 return productArticle;
 }
+
+/* Funcion para crear el item de la compra */
 function crearItemCompra(dato){
   const item = document.createElement('div');
   item.id="grid-item-carrito";
@@ -82,14 +86,10 @@ function crearItemCompra(dato){
   <button class="carrito-eliminar ${dato.id}"><i class="fa-solid fa-trash"></i></button>
   <button class="carrito-editar ${dato.id}"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
   </div>`
-  
-
   return item;
 }
 
-
-
-
+/* Crear estructura de pantalla de carga */
 const imagenCarga= ()=>{
   const imagen= document.createElement('div');
   imagen.innerHTML=` <div>
@@ -98,13 +98,33 @@ const imagenCarga= ()=>{
 </div>`
 return imagen;
 }
-let carga = (response, dato, cargar)=>{
+/* Promesa para la carga del listado de peliculas */
+/* let carga = (response, dato, cargar)=>{
   return new Promise((resolve, reject)=>{
     setTimeout(()=>{
       if(response){
         resolve("muestra carga");
         contenedor.appendChild(crearContenedor(dato));
         contenedor.removeChild(cargar);
+        botonesComprar(); 
+      }
+      else{
+        reject("Sin peliculas");
+      }
+    }, 2000);
+    });
+
+}; */
+let carga = (response, dato, cargar)=>{
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      if(response){
+        resolve("muestra carga");
+        contenedor.removeChild(cargar);
+        for(topic of dato){
+          contenedor.appendChild(crearContenedor(topic));
+        }
+         
         botonesComprar(); 
       }
       else{

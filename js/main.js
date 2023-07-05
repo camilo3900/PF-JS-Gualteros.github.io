@@ -23,13 +23,14 @@ const listaCategorias = [
 consumirPeliculas();
 
 /* Evento para los botones */
-function botonesComprar(){
+/* function botonesComprar(){
   const arrayBotones = document.querySelectorAll(".btn_comprar");
+  console.log(arrayBotones);
+  console.log(arrayBotones.length);
   arrayBotones.forEach((btn) => {
     btn.addEventListener("click", () => {
-      let pelis=peliculaDesdeLS("peliculasLS");
-      pel = pelis.filter((el) => el.id== btn.id);
-      console.log(pel[0]);
+      pelis.push(peliculaDesdeLS("peliculasLS"));
+      let pel = pelis.filter((el) => el.id== btn.id);
       console.log("Añadiste al carrito la pelicula: "+ pel[0].nombre);
       Toastify({
   
@@ -47,55 +48,93 @@ function botonesComprar(){
         console.log("Lista carrito total:");
         console.log(listaCarrito);
         botonesComprar();
-console.log(listaCarrito.length);
+        console.log(listaCarrito.length);
 
        
     });
   });
   
-}
-for (const cate of listaCategorias) {/*Se recorre la lista para generar los li de categorias */
-  const item = document.createElement("li");
-  const categoria = document.createElement('a');
-  categoria.textContent=cate;
-  categoria.classList.add('dropdown-item');
-  item.appendChild(categoria);
- buttonCategorias.appendChild(item);
+} */
+function botonesComprar(){
+  const arrayBotones = document.querySelectorAll(".btn_comprar");
+  console.log("botones categoria escogida:");
+  console.log(arrayBotones);
+  console.log(arrayBotones.length);
+  arrayBotones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      pelis.push(peliculaDesdeLS("peliculasLS"));
+      let pel = pelis.filter((el) => el.id == btn.id);
+      console.log(pel);
+      /* console.log("Añadiste al carrito la pelicula: "+ pel[0].nombre); */
+      Toastify({ //Alerta de pelicula seleccionada
+        text: `Añadiste la pelicula: ${pel[0].nombre}`,
+        position: "bottom-left",
+        className: "mi-toastify",
+        offset: {
+          x: -30, // Ajusta el desplazamiento horizontal
+          y: 20, // Ajusta el desplazamiento vertical
+        },
+        duration: 1000,   
+        }).showToast();
+        contenedorCarrito.appendChild(crearItemCompra(pel[0]));
+        listaCarrito.push(pel[0]);
+        console.log("Lista carrito total:");
+        console.log(listaCarrito);
+       /*  botonesComprar(); */
+        console.log(listaCarrito.length);
 
-     categoria.onclick=()=>
-     {
-      contenedor.innerHTML="";
-      const image=imagenCarga();
-      contenedor.appendChild(image);
-      boton.innerText=cate;
-      for (const peli of buscaCategoria(peliculaDesdeLS('peliculasLS'), cate)) {
-                   /* Aqui va el friltrado por genero */
-                              
-        carga(true,peli, image);
        
-       }
-       switch(boton.innerText){
-        case "Comedia":
-          contenedor.removeChild(image);
-          contenedor.innerHTML=`<h3>lo sentimos, no hay peliculas de esta Categoria</h3>`;
-          break;
-          case "Todas las Categorias":
-            contenedor.removeChild(image);
-            peliculaDesdeLS('peliculasLS').forEach(peli => { 
-              contenedor.appendChild(crearContenedor(peli))});
-              botonesComprar();
-       }
-
-     } 
-     
+    });
+  });
+  return listaCarrito;
+  
 }
 
 
-
-console.log(peliculaDesdeLS('peliculasLS'));
-peliculaDesdeLS('peliculasLS').forEach(peli => { 
+for (const cate of listaCategorias) {
+  /*Se recorre la lista para generar los li de categorias */
+  const item = document.createElement("li");
+  const categoria = document.createElement("a");
+  categoria.textContent = cate; //Cada opcion del select toma el nombre de cada categoria
+  categoria.classList.add("dropdown-item"); //Se le agrega una clase a la etiqueta a
+  item.appendChild(categoria);
+  buttonCategorias.appendChild(item);
+  //Evento onclick para cada opcion del SELECT categoria
+  categoria.onclick = () => {
+    contenedor.innerHTML = "";//Se vacia el contenedor de peliculas
+    const image = imagenCarga();
+    contenedor.appendChild(image);
+    boton.innerText = cate; //Se reemplaza nombre del SELECT por categoria escogida
+    let peliculasFiltradasCategoria = [];
+    for (const peli of buscaCategoria(peliculaDesdeLS("peliculasLS"), cate)) {
+      /* Aqui va el friltrado por genero */
+      peliculasFiltradasCategoria.push(peli);
+    }
+    console.log("Array objetos categoria seleccionada");
+    console.log(peliculasFiltradasCategoria);
+    carga(true, peliculasFiltradasCategoria, image);
+   
+    switch (boton.innerText) {
+      case "Comedia":
+        contenedor.removeChild(image);
+        contenedor.innerHTML = `<h3>lo sentimos, no hay peliculas de esta Categoria</h3>`;
+        break;
+      case "Todas las Categorias":
+        contenedor.removeChild(image);
+        peliculaDesdeLS("peliculasLS").forEach((peli) => {
+          contenedor.appendChild(crearContenedor(peli));
+        });
+        botonesComprar();
+       break;
+        
+    }
+  };
+ 
+}
+/* Se traen las peliculas parseadas desde el LS */
+/* peliculaDesdeLS('peliculasLS').forEach(peli => { 
   contenedor.appendChild(crearContenedor(peli));
-});
+}); */
 
 
 /* Funcion que retorna objetos que coinciden con la busqueda */
