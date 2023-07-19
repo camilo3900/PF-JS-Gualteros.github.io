@@ -5,9 +5,13 @@ const contenedorCarrito= document.querySelector('#grid-container-carrito')
 const buscar= document.querySelector('#boton_buscar');
 const inputBusqueda= document.querySelector('#campo');
 const boton=document.querySelector(".btn");
+let productosCarrito=[];/* Array de carrito */
+const botonComprar= document.querySelector('#comprarTodo');
+const botonVaciar = document.querySelector('#eliminarTodo');
+const pagar= document.querySelector('.totalPagar');
 let pelis=[];/* Array que se llena con peliculas del ls */
 /* Se crea un array de categorias */
-localStorage.clear();
+llenarLocalStorage('peliculasLS', peliculasJSON);
 let listaCarrito=[];
 const listaCategorias = [
   "Todas las Categorias",
@@ -20,19 +24,77 @@ const listaCategorias = [
 ];
 /* Pantalla de espera */
 /* Llamamos a la funcion consumir json y guardar en el localStorage */
-consumirPeliculas();
+
+botonesComprar();
+function crearItemsCarrito(){
+  console.log(traerDatos('pelisCarrito'));
+  for (const el of traerDatos('pelisCarrito')) {
+      cargarProductos(traerDatos('pelisCarrito'))
+      const item=crearItemCompra(el);
+      contenedorCarrito.appendChild(item);     
+  }
+  botonesEliminar()
+  botonesEditar()
+}
+function botonesEditar(){
+  const edit = document.querySelectorAll(".carrito-editar");
+  console.log(edit);
+  edit.forEach((btn) => {
+      
+    btn.addEventListener("click", () => {
+     const control = document.querySelector('.cantidad-modificador');
+     console.log("hiciste click");
+
+    control.style.visibility= "hidden";
+})
+})
 
 
+}
+function botonesEliminar(){
+    
+  const remove = document.querySelectorAll(".carrito-eliminar");
+  remove.forEach((btn) => {
+      
+    btn.addEventListener("click", () => {
+      cargarProductos(traerDatos('pelisCarrito'));
+      /* productosCarrito.push(traerDatos('pelisCarrito')); */
+      console.log("pelicula eliminada:"+cargarProductos(traerDatos('pelisCarrito')));
+      let peli = productosCarrito.find((el) => el.id == btn.id);
+
+      let peliTotal= productosCarrito.filter((el)=>el.id !=peli.id);
+      guardarLocal('pelisCarrito', peliTotal);
+      contenedorCarrito.innerHTML="";
+      Swal.fire(
+          'Operacion Exitosa',
+          `Has eliminado la pelicula: ${peli.nombre}`,
+          'success'
+        )
+        crearItemsCarrito();
+        const pagarlo=  traerDatos('pelisCarrito').reduce((acc, producto) => {
+          return acc + producto.precio;
+        }, 0);
+        guardarLocal("totalPago", pagarlo);
+        pagar.innerHTML= `$${pagarlo}`;
+        
+       
+})
+
+
+})
+}
+/* Botones Comprar de cards peliculas */
 function botonesComprar(){
   const arrayBotones = document.querySelectorAll(".btn_comprar");
   console.log("botones categoria escogida:");
   console.log(arrayBotones);
+  console.log("cantidad botones:");
   console.log(arrayBotones.length);
   arrayBotones.forEach((btn) => {
     btn.addEventListener("click", () => {
       pelis.push(peliculaDesdeLS("peliculasLS"));
       let pel = pelis.filter((el) => el.id == btn.id);
-      console.log(pel);
+      console.log(pel[0].nombre);
       /* console.log("Añadiste al carrito la pelicula: "+ pel[0].nombre); */
       Toastify({ //Alerta de pelicula seleccionada
         text: `Añadiste la pelicula: ${pel[0].nombre}`,
@@ -46,12 +108,17 @@ function botonesComprar(){
         }).showToast();
         contenedorCarrito.appendChild(crearItemCompra(pel[0]));
         listaCarrito.push(pel[0]);
-        console.log("Lista carrito total:");
-        console.log(listaCarrito);
-       /*  botonesComprar(); */
-        console.log(listaCarrito.length);
 
-       
+        console.log(listaCarrito.length);
+        //Se guarda carrito en el local
+        llenarLocalStorage("pelisCarrito", listaCarrito);
+       /* Aqui se llama la funcion eliminar pelicula */    
+    botonesEliminar()
+    const pagarlo=  traerDatos('pelisCarrito').reduce((acc, producto) => {
+      return acc + producto.precio;
+    }, 0);
+    guardarLocal("totalPago", pagarlo);
+    pagar.innerHTML= `$${pagarlo}`;
     });
   });
   return listaCarrito;
@@ -78,10 +145,7 @@ for (const cate of listaCategorias) {
       /* Aqui va el friltrado por genero */
       peliculasFiltradasCategoria.push(peli);
     }
-    console.log("Array objetos categoria seleccionada");
-    console.log(peliculasFiltradasCategoria);
     carga(true, peliculasFiltradasCategoria, image);
-   
     switch (boton.innerText) {
       case "Comedia":
         contenedor.removeChild(image);
@@ -99,12 +163,6 @@ for (const cate of listaCategorias) {
   };
  
 }
-/* Se traen las peliculas parseadas desde el LS */
-/* peliculaDesdeLS('peliculasLS').forEach(peli => { 
-  contenedor.appendChild(crearContenedor(peli));
-}); */
-
-
 /* Funcion que retorna objetos que coinciden con la busqueda */
 let busca=function filtrarPorCampo(arr, filtro) {
   const filtrado = arr.filter((el) => {
@@ -112,51 +170,51 @@ let busca=function filtrarPorCampo(arr, filtro) {
   });
   return filtrado;
 }
-
-
-
-
-
-
 /* EJECUCION DEL PROGRAMA */
-
 /* Evento click para busqueda de pelicula  por nombre*/
 buscar.onclick= (e)=>{
-
   e.preventDefault();
   contenedor.innerHTML="";/* Se eliminan los cards del contenedor para emular la recarga de la pagina por busqueda */
-
-
   for(pel of busca(peliculaDesdeLS('peliculasLS'), inputBusqueda.value)){/* Se los objetos filtrados para agregarlos como hijos del div principal */
-  /* contenedor.appendChild(crearContenedor(pel)); */
-  /* carga(true,pel, imagenCarga()); */
-  contenedor.appendChild(crearContenedor(pel));
-
-  
+  contenedor.appendChild(crearContenedor(pel)); 
 }
-
   /* Para agregar y mostrar toastify */
   botonesComprar(); 
   /* Condición para determinar si hay películas como resultado de la búsqueda */
   contenedor.innerHTML==""?contenedor.innerHTML=`<h3>lo sentimos, no hay peliculas</h3>`: console.log("con peliculas");   
- 
-
-
 }
 
-
-/*  */
-/* EJECUCIÓN DEL CÓDIGO */
-
-/* botonesComprar();
-if (contenedorCarrito!=""){
-  const btnEliminarItem= document.querySelectorAll(".carrito-eliminar");
-  console.log(btnEliminarItem.id );
-  btnEliminarItem.forEach((btn)=>{
-    btn.addEventListener("click", () => {
-      
-      console.log("tomaaa");
-  
-  });
-  });
-}; */
+/* Funcion para agregar peliculas al carrito */
+botonComprar.onclick= ()=>{        
+  Swal.fire(
+      'Operacion Exitosa',
+      `Debes pagar: $${traerDatos('totalPago')}`,
+      'success'
+    )
+    contenedorCarrito.innerHTML="";
+    localStorage.removeItem('pelisCarrito');
+    localStorage.removeItem('totalPago');  
+}
+botonVaciar.onclick =()=>{
+  Swal.fire({
+      title: 'Estas seguro que quieres vaciar el carrito?',
+      text: "Esta operacion no se puede revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar'  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Operacion completada!',
+          'El carrito ha sido vaciado',
+          'success'
+        )
+        contenedorCarrito.innerHTML="";
+        localStorage.removeItem('pelisCarrito');
+        localStorage.removeItem('totalPago');
+      }
+    })
+};

@@ -12,27 +12,31 @@ class Pelicula {
   }
 }
 
-/* Funcion para consumir archivo json de peliculas */
+const peliculasJSON =  consumirPeliculas();
+
+/* Se llema el JSON de peliculas y se guarda en el localStorage */
 function consumirPeliculas(){
-  fetch('../datos/peliculas.json')
-  .then(function(response) {
-    return response.json();
+ fetch('../datos/peliculas.json')
+  .then((response) =>{
+    return  response.json();
   })
-  .then(function(data) {
+  .then((data)=> {
     pelis=data;
-    console.log("Peliculas consumidas");
-    console.log(pelis);
-    llenarLocalStorage('peliculasLS', pelis ); 
+    console.log( pelis);
+    llenarLocalStorage('peliculasLS', pelis);
   })
-  .catch(function(error) {
+  .catch((error)=> {
     console.log('Ocurrió un error:'+error);
-  });
-}
+  })
+};
 
  /* funcion para llenar el storage */
  function llenarLocalStorage(clave, dato){
   localStorage.setItem(clave, JSON.stringify(dato));/* Se convierte el listado de objetos a String */
  } 
+/* Funcion para traer lista de carrito */
+ const traerDatos= (clave)=> JSON.parse(localStorage.getItem(clave));
+
 
 /* Funcion para traer las peliculas del localStorage*/
 const peliculaDesdeLS=(llave)=>JSON.parse(localStorage.getItem(llave));/* Se llama cada lista */
@@ -44,7 +48,12 @@ let buscaCategoria=function filtrarCategoria(arr, filtro) {
   });
   return filtrado;
 }
-
+function cargarProductos(dato){
+  return productosCarrito=dato;
+}
+const guardarLocal=(clave, valor)=>{
+  return localStorage.setItem(clave, JSON.stringify(valor));
+}
 /* Funcion para crear el contenedor donde se mostrará cada película */
 function crearContenedor(dato){
   const productArticle = document.createElement('article');
@@ -64,58 +73,51 @@ return productArticle;
 /* Funcion para crear el item de la compra */
 function crearItemCompra(dato){
   const item = document.createElement('div');
-  item.id="grid-item-carrito";
-  item.innerHTML=`               
-   <img src="${dato.img}" alt="">
-  <div class="carrito-nombre">
-      <h5>Nombre</h5>
-      <h4>${dato.nombre}</h4>
-  </div>
-  <div class="carrito-cantidad">
-      <h5>Cantidad</h5>
-      <h4>1</h4>
-  </div>
-  <div class="carrito-total">
-      <h5>Total</h5>
-      <h4>${dato.precio}</h4>
-  </div>
-  <div class="carrito-subtotal">
-      <h5>Subtotal</h5>
-      <h4>$1000</h4>
-  </div>
-  <div id="opciones_carrito">
-  <button class="carrito-eliminar ${dato.id}"><i class="fa-solid fa-trash"></i></button>
-  <button class="carrito-editar ${dato.id}"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
-  </div>`
-  return item;
+    item.id = dato.id;
+    item.className="grid-item-carrito";
+    item.innerHTML=`               
+     <img src="${dato.img}" alt="">
+    <div class="carrito-nombre">
+        <h5>Nombre</h5>
+        <h4>${dato.nombre}</h4>
+    </div>
+    <div class="carrito-cantidad">
+        <h5>Cantidad</h5>
+        <h4 class="cant">${dato.id}</h4>
+        <div class="cantidad-modificador">
+        <div class="cuadro">
+            <i class="fa-sharp fa-solid fa-arrow-right agregar"></i>
+        </div>
+        <div class="cuadro">
+            <i class="fa-sharp fa-solid fa-arrow-right fa-rotate-180 quitar"></i>
+        </div>
+    </div>
+    </div>
+    <div class="carrito-total">
+        <h5>Total</h5>
+        <h4 >${dato.precio}</h4>
+    </div>
+    <div class="carrito-subtotal">
+        <h5>Subtotal</h5>
+        <h4>${dato.precio}</h4>
+    </div>
+    <div id="opciones_carrito">
+    <button class="carrito-eliminar" id="${dato.id}"><i class="fa-solid fa-trash"></i></button>
+    <button class="carrito-editar "><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+    </div>`
+    return item;
 }
 
 /* Crear estructura de pantalla de carga */
 const imagenCarga= ()=>{
   const imagen= document.createElement('div');
-  imagen.innerHTML=` <div>
+  imagen.innerHTML=` 
   <img src="https://cdn.pixabay.com/animation/2022/12/05/15/23/15-23-06-837_512.gif" alt="carga">
   <p>Procesando informacion...</p>
-</div>`
-return imagen;
+`
+  return imagen;
 }
-/* Promesa para la carga del listado de peliculas */
-/* let carga = (response, dato, cargar)=>{
-  return new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-      if(response){
-        resolve("muestra carga");
-        contenedor.appendChild(crearContenedor(dato));
-        contenedor.removeChild(cargar);
-        botonesComprar(); 
-      }
-      else{
-        reject("Sin peliculas");
-      }
-    }, 2000);
-    });
-
-}; */
+/* Funcion para cargar cards de peliculas por categorias */
 let carga = (response, dato, cargar)=>{
   return new Promise((resolve, reject)=>{
     setTimeout(()=>{
@@ -125,7 +127,6 @@ let carga = (response, dato, cargar)=>{
         for(topic of dato){
           contenedor.appendChild(crearContenedor(topic));
         }
-         
         botonesComprar(); 
       }
       else{
@@ -136,4 +137,8 @@ let carga = (response, dato, cargar)=>{
 
 };
 
+
+
+
   
+
